@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const { sequelize } = require('../database/database');
 
 
-const sessoes = sequelize.define('sessoes', {
+const Sessoes = sequelize.define('sessoes', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true
@@ -23,4 +23,4 @@ const sessoes = sequelize.define('sessoes', {
     timestamps: false
 });
 
-module.exports = sessoes;
+module.exports = Sessoes;

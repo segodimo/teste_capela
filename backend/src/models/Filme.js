@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const { sequelize } = require('../database/database');
 
-const Sesf = require('./Sesf');
+const Sessoes = require('./Sessoes');
 
 const Filme = sequelize.define('filme', {
     id: {
@@ -32,7 +32,10 @@ const Filme = sequelize.define('filme', {
 
 module.exports = Filme;
 
-Filme.hasMany(Sesf, { foreinkey: 'id_filme', sourceKey: 'id' });
-Sesf.belongsTo(Filme, { foreinkey: 'id_filme', targetId: 'id' });
+// Filme.hasMany(Sessoes, { foreinkey: 'id_filme', sourceKey: 'id' });
+// Sessoes.belongsTo(Filme, { foreinkey: 'id_filme', targetId: 'id' });
+
+Filme.hasMany(Sessoes, { foreinkey: 'id_filme', sourceKey: 'id' });
+Sessoes.belongsTo(Filme, { foreinkey: 'id_filme', targetId: 'id' });
 
 module.exports = Filme;

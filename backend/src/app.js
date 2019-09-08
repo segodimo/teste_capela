@@ -4,7 +4,7 @@ import morgan from 'morgan'
 // Import routes
 import cinameRoutes from './routes/cinemas'
 import filmeRoutes from './routes/filmes'
-import sesfRoutes from './routes/sesfs';
+import sessoesRoutes from './routes/sessoes';
 const app = express();
 
 
@@ -15,6 +15,6 @@ app.use(json());
 // Routes
 app.use('/api/cinemas', cinameRoutes);
 app.use('/api/filmes', filmeRoutes);
-app.use('/api/sessoes', sesfRoutes);
+app.use('/api/sessoes', sessoesRoutes);
 
 export default app;
