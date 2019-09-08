@@ -1,0 +1,6 @@
+backend/node_modules/
+backend/dist/
+backend_x/
+frontend_x/
+notas/
+.DS_Store
