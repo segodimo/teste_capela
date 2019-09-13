@@ -61,14 +61,66 @@ export default class CreateSessao extends Component {
             //     no_sala: '1',
             //     // date: new Date()
             // })
+
+
+            console.log('okokokok')
+            console.log(this.state.cinemas)
+
+            // if (this.state.cinemas.length > 0){
+            //     console.log(true)
+            // }else{
+            //     console.log(false)
+            // }
+            // var asd = this.state.cinemas.length > 0 ? true : false;
+            // var asd = this.state.cinemas.length > 0 ? null : alert('Precisa ter cinemas cadastrados');
+
+            if (this.state.cinemas.length > 0) {
+                this.setState({ date: new Date(), no_sala: '1', id_cinema: this.state.cinemas[0].id })
+            } else {
+                alert('Precisa ter cinemas cadastrados');
+                window.location.href = '/editcinema';
+            }
+            
+            if (this.state.filmes.length > 0) {
+                this.setState({ date: new Date(), no_sala: '1', id_filme: this.state.filmes[0].id })
+            } else {
+                alert('Precisa ter filmes cadastrados')
+                window.location.href = '/editfilme';
+            }
+
+
+            // window.location.href = '/';
+
+            // console.log(asd)
+            // alert('hola')
+
+            // this.setState({
+            //     // id_cinema: this.state.cinemas[0].id,
+            //     // id_filme: this.state.filmes[0].id,
+            //     // no_sala: '1',
+            //     // // date: new Date()
+
+            //     // cinemas: [],
+            //     // filmes: [],
+            //     // id_cinema: '',
+            //     // id_filme: '',
+            //     // no_sala: '',
+            //     // date: new Date(),
+            //     // editing: false,
+            //     // _id: ''
+
+            // })
+
+
         }
-        console.log(this.state)
+        // console.log(this.state)
 
     }
 
     onCinemaChange = (e) => {
         // console.log(e.target.value)
         this.setState({ id_cinema: e.target.value })
+        console.log(this.state)
     }
 
     onFilmeChange = (e) => {
