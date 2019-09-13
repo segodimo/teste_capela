@@ -1,0 +1,72 @@
+import React, { Component } from 'react'
+import axios from 'axios'
+
+export default class SessoesList extends Component {
+
+    state = {
+        sessoes: [],
+        listSesVsDia: [],
+        listUnqSemanas: [],
+        nomefilme: ''
+    }
+
+
+    async componentDidMount() {
+        const res = await axios.get('http://localhost:4000/api/sessoes');
+        this.setState({ sessoes: res.data.sessoes });
+        // this.setState({ sessoes: res.data.sessoes });
+        // this.setState({listPorDia: res.data.map(sessoes => sessoes.date)});
+        // console.log(this.state.sessoes)
+        // const list = this.state.sessoes.map(sessoes => sessoes.date);
+        // console.log(list)
+        // this.setState({ listPorDia: list });
+        //+++++++
+        // console.log(this.state.listPorDia[0])
+        // const dia = this.state.listPorDia[0];
+        // const dt = new Date(this.state.listPorDia[0]);
+        // const dt = new Date("2019-09-11");
+
+        // console.log(diff)
+        // console.log(dt.getDay())
+        // console.log(dt.getMonth())
+        // d.getDay()
+
+        // var listSemanas = list.map(data => {
+        //     const dt = new Date(data);
+        //     const diff =  (dt.getDate() - dt.getDay() + (dt.getDay() === 0 ? -6 : 1) - 1);
+        //     // return new Date(dt.setDate(diff));
+        //     return dt.setDate(diff);
+        // });
+        // console.log(listSemanas)
+
+        //++++++++++++++++++++++++++++++++++++
+        const listSesVsDia = this.state.sessoes.map(sessoes => {
+            const dt = new Date(sessoes.date);
+            const diff = (dt.getDate() - dt.getDay() + (dt.getDay() === 0 ? -6 : 1) - 1);
+            return [sessoes.id, dt.setDate(diff)];
+        });
+        console.log(listSesVsDia)
+        this.setState({ listSesVsDia });
+        //++++++++++++++++++++++++++++++++++++
+        const listSemanas = this.state.sessoes.map(sessoes => {
+            const dt = new Date(sessoes.date);
+            const diff = (dt.getDate() - dt.getDay() + (dt.getDay() === 0 ? -6 : 1) - 1);
+            return dt.setDate(diff);
+        });
+        // console.log(listSemanas)
+        // const list = [26, 27, 26, 26, 28, 28, 29, 29, 30]
+        //++++++++++++++++++++++++++++++++++++
+        const listUnqSemanas = listSemanas.filter((x, i, a) => a.indexOf(x) === i)
+        console.log(listUnqSemanas)
+        this.setState({ listUnqSemanas });
+        //++++++++++++++++++++++++++++++++++++
+    }
+
+    render() {
+        return (
+            <div>
+                SESÕES LIST
+            </div>
+        )
+    }
+}

@@ -1,4 +1,5 @@
 import express, { json } from 'express'
+import cors from 'cors'
 import morgan from 'morgan'
 
 // Import routes
@@ -9,6 +10,7 @@ const app = express();
 
 
 // Middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(json());
 

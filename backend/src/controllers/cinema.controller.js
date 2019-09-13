@@ -22,8 +22,8 @@ export async function createCinema(req,res){
 
 export async function getCinemas(req, res) {
     const cinema = await Cinema.findAll({
-        attributes: ['nome', 'cidade', 'salas'],
-        order: [ ['id', 'DESC'] ]
+        attributes: ['id', 'nome', 'cidade', 'salas'],
+        order: [ ['nome', 'ASC'] ]
     });
     res.json({ cinema });
 }
@@ -33,7 +33,7 @@ export async function getOneCinema(req, res) {
     try {
         const cinema = await Cinema.findOne({
             where: { id },
-            attributes: ['nome', 'cidade', 'salas']
+            attributes: ['id', 'nome', 'cidade', 'salas']
         });
         res.json({ cinema });
     } catch (e) {
@@ -58,7 +58,7 @@ export async function updateCinema(req, res) {
     const { nome, cidade, salas } = req.body;
     try {
         const cinema = await Cinema.findOne({
-            attributes: ['nome', 'cidade', 'salas'],
+            attributes: ['id', 'nome', 'cidade', 'salas'],
             where: { id }
         });
         const updatedCinema = await Cinema.update(

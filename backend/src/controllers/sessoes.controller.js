@@ -5,8 +5,11 @@ export async function createSessoes(req,res){
         const { id_filme, id_cinema, no_sala, date } = req.body;
         // console.log(req.body);
         // res.send('OKOKOK RECIVIDO SessoesS ');
+        // const newdate = new Date(date);
+        // console.log('newdate', newdate)
 
         let newSessoes = await Sessoes.create({ id_filme, id_cinema, no_sala, date },
+
         { fields: ['id_filme', 'id_cinema', 'no_sala', 'date'] });
         
         res.json({ message: 'NOVA SECÃO FOI CRIADA ', newSessoes });
@@ -22,8 +25,9 @@ export async function createSessoes(req,res){
 
 export async function getSessoess(req, res) {
     const sessoes = await Sessoes.findAll({
-        attributes: ['id_filme', 'id_cinema', 'no_sala', 'date'],
-        order: [ ['id', 'DESC'] ]
+        attributes: ['id', 'id_filme', 'id_cinema', 'no_sala', 'date'],
+        order: [ ['date', 'DESC'] ]
+        // order: [ ['id', 'DESC'] ]
     });
     res.json({ sessoes });
 }
@@ -33,7 +37,7 @@ export async function getOneSessoes(req, res) {
     try {
         const sessoes = await Sessoes.findOne({
             where: { id },
-            attributes: ['id_filme', 'id_cinema', 'no_sala', 'date']
+            attributes: ['id', 'id_filme', 'id_cinema', 'no_sala', 'date']
         });
         res.json({ sessoes });
     } catch (e) {
@@ -58,7 +62,7 @@ export async function updateSessoes(req, res) {
     const { id_filme, id_cinema, no_sala, date } = req.body;
     try {
         const sessoes = await Sessoes.findOne({
-            attributes: ['id_filme', 'id_cinema', 'no_sala', 'date'],
+            attributes: ['id', 'id_filme', 'id_cinema', 'no_sala', 'date'],
             where: { id }
         });
         const updatedSessoes = await Sessoes.update(

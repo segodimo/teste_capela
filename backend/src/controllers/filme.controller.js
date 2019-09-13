@@ -23,7 +23,7 @@ export async function createFilme(req,res){
 export async function getFilmes(req, res) {
     const filmes = await Filme.findAll({
         attributes: ['id', 'nome', 'genero', 'duracao', 'classificacao', 'lancamento', 'sinopse'],
-        order: [ ['id', 'DESC'] ]
+        order: [ ['nome', 'ASC'] ]
     });
     res.json({ filmes });
 }
