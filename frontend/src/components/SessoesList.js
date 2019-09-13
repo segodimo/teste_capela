@@ -121,20 +121,22 @@ export default class SessoesList extends Component {
     render() {
 
         const sessaoTit = (lus) => (
+            // let semanaEnMilisegundos = 1000 * 60 * 60 * 24 * 5;
             // <h3>Sessão {(lus.toDateString())} </h3>
-            <h3 className="text-white">Sessão <span className="span_tit_sesf text-white" >{this.state.nomesDias[(lus.getDay())]} {(lus.getDate())}/{(lus.getMonth())}/{(lus.getFullYear())} - Sabado {(new Date(lus.getTime() + 604800000).getDate())}/{(new Date(lus.getTime() + 604800000).getMonth())}/{(new Date(lus.getTime() + 604800000).getFullYear())} </span></h3>
+            <h3 className="text-white">Sessão <span className="span_tit_sesf text-white" >{this.state.nomesDias[(lus.getDay())]} {(lus.toLocaleString())} - Sabado {(new Date(lus.getTime() + 518400000).toLocaleString())}</span></h3>
             // <h3 className="text-white">Sessão <span className="span_tit_sesf text-white" >{this.state.nomesDias[(lus.getDay())]} {(lus.getDate())}/{(lus.getMonth())}/{(lus.getFullYear())} - Sabado * {(lus.getTime() + 604800000)}/{(lus.getMonth())}/{(lus.getFullYear())}</span></h3>
         );
 
         const filmeCard = (index, lsvd, datelsv) => (
             // <h4 key={index} >{Date(index)}</h4>
             <div className="card mt-4 border-primary" key={index}>
-                <div className="card-header" key={index}><h5 className="mt-2">{lsvd[2].nome}</h5> <span className="text-primary">{lsvd[3].nome} - {lsvd[3].cidade} - Sala {lsvd[4]} - {this.state.nomesDias[(datelsv.getDay())]} - {(datelsv.toDateString())}</span> </div>
+                {/* <div className="card-header" key={index}> <h5 className="mt-2"> {(new Date(datelsv.getTime()).toLocaleString())} </h5> </div> */}
+                <div className="card-header" key={index}><h5 className="mt-2">{lsvd[2].nome}</h5> <span className="text-primary">{lsvd[3].nome}, {lsvd[3].cidade}, Sala {lsvd[4]}, Data: {(new Date(datelsv.getTime()).toLocaleString())} </span> </div>
                 <div className="card-body">
                     <blockquote className="blockquote mb-0">
                         <p>{lsvd[2].sinopse}</p>
                         <footer className="blockquote-footer text-primary">Genero: <cite title="Source Title">{lsvd[2].genero}</cite></footer>
-                        <footer className="blockquote-footer text-primary">Lançamento: <cite title="Source Title">{lsvd[2].lancamento}</cite></footer>
+                        <footer className="blockquote-footer text-primary">Lançamento: <cite title="Source Title">{ (new Date( lsvd[2].lancamento ).toLocaleString()) }</cite></footer>
                         <footer className="blockquote-footer text-primary">Duração: <cite title="Source Title">{lsvd[2].duracao} min.</cite></footer>
                         <footer className="blockquote-footer text-primary">Classificação: <cite title="Source Title">{lsvd[2].classificacao}</cite></footer>
                     </blockquote>

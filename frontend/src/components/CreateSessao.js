@@ -12,6 +12,7 @@ export default class CreateSessao extends Component {
         id_filme: '',
         no_sala: '',
         date: new Date(),
+        nwedate: '',
         editing: false,
         _id: ''
     }
@@ -52,13 +53,23 @@ export default class CreateSessao extends Component {
         } else {
             // console.log(this.state.cinemas)
 
+            // this.setState({
+            //     id_cinema: '',
+            //     id_filme: '',
+            //     no_sala: '',
+            //     date: new Date(),
+            //     editing: false,
+            //     _id: ''
+            // });
+
+
             if (this.state.cinemas.length > 0) {
                 this.setState({ date: new Date(), no_sala: '1', id_cinema: this.state.cinemas[0].id })
             } else {
                 alert('Precisa ter cinemas cadastrados');
                 window.location.href = '/editcinema';
             }
-            
+
             if (this.state.filmes.length > 0) {
                 this.setState({ date: new Date(), no_sala: '1', id_filme: this.state.filmes[0].id })
             } else {
@@ -86,11 +97,13 @@ export default class CreateSessao extends Component {
         this.setState({ no_sala: e.target.value })
     }
 
-    onChangeDate = date => {
-        console.log('date', date)
-        const newDate = new Date(date)
-        this.setState({ date: newDate });
-        console.log(this.state)
+    onChangeDate = async date => {
+        // console.log('date', date)
+        const newDate = new Date(date).getTime();
+        // console.log('newDate', newDate)
+        // this.setState({ date: newDate, nwedate: Date(newDate * 1000) });
+        this.setState({ date: newDate, nwedate: newDate });
+        // console.log(this.state)
     }
 
     onSubmit = async (e) => {
@@ -99,13 +112,12 @@ export default class CreateSessao extends Component {
             id_filme: this.state.id_filme,
             id_cinema: this.state.id_cinema,
             no_sala: this.state.no_sala,
-            // date: this.state.date
-            date: "2019-01-01 12:00:00"
+            date: this.state.nwedate
         };
         if (this.state.editing) {
             await axios.put('http://localhost:4000/api/sessoes/' + this.state._id, novaSessao)
         } else {
-            // console.log(novaSessao)
+            // console.log("novaSessao"); console.log(novaSessao)
             const res = await axios.post('http://localhost:4000/api/sessoes', novaSessao);
             console.log(res)
         }

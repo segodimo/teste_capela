@@ -253,7 +253,7 @@ export default class CreateFilme extends Component {
                             <li className="list-group-item list-group-item-action mb-4" key={filme.id}>
                                 <h4>{filme.nome}</h4>
                                 <p>{filme.genero}</p>
-                                <p>Duração: {filme.duracao}, Classificação: {filme.classificacao}, Lançamento {filme.lancamento}</p>
+                                <p>Duração: {filme.duracao}min, Classificação: {filme.classificacao}, Lançamento: { (new Date( filme.lancamento ).toLocaleString()) } </p>
                                 <p>Sinopse: {filme.sinopse}</p>
                                 <button type="button" className="btn btn-outline-warning ml-auto" onClick={() => this.onClickEditarFilme(filme.id)} >Editar</button>
                                 <button type="button" className="btn btn-outline-danger ml-4" onClick={() => this.onClickDeletaFilme(filme.id)} >Deletar</button>
