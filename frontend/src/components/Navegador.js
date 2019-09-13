@@ -16,7 +16,7 @@ export default class Navegador extends Component {
                             <li className="nav-item"> <Link className="navbar-brand" to="/">Home</Link> </li>
                             <li className="nav-item"> <Link className="navbar-brand" to="/editfilme">Filme</Link> </li>
                             <li className="nav-item"> <Link className="navbar-brand" to="/editcinema">Cinema</Link> </li>
-                            <li className="nav-item"> <Link className="navbar-brand" to="/sessaoce">Sessão</Link> </li>
+                            <li className="nav-item"> <Link className="navbar-brand" to="/editsessao">Sessão</Link> </li>
                         </ul>
                     </div>
                 </div>

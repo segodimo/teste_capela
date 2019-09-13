@@ -17,8 +17,8 @@ function App() {
       <Navegador />
       <div className="container p-4">
         <Route path="/" exact component={SessoesList} />
-        <Route path="/sessaoce" exact component={CreateSessao} />
-        <Route path="/sessaoce/:id" exact component={CreateSessao} />
+        <Route path="/editsessao" exact component={CreateSessao} />
+        <Route path="/editsessao/:id" exact component={CreateSessao} />
         <Route path="/editfilme/" exact component={CreateFilme} />
         <Route path="/editcinema" exact component={CreateCinema} />
         {/* <Route path="/filmes" exact component={FilmesList} /> */}

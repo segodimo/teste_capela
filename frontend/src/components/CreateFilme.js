@@ -174,7 +174,7 @@ export default class CreateFilme extends Component {
                                 <div className="form grup">
                                     <p className="txt_form">Duração</p>
                                     <input
-                                        type="text"
+                                        type="number"
                                         value={this.state.duracao}
                                         className="form-control"
                                         onChange={this.onChangeDuracao}

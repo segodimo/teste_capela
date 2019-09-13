@@ -50,29 +50,7 @@ export default class CreateSessao extends Component {
                 editing: true
             });
         } else {
-            // console.log(this.state.cinemas[0].id)
-            // console.log(this.state.filmes[0].id)
-            // // if(){
-
-            // // }
-            // this.setState({
-            //     id_cinema: this.state.cinemas[0].id,
-            //     id_filme: this.state.filmes[0].id,
-            //     no_sala: '1',
-            //     // date: new Date()
-            // })
-
-
-            console.log('okokokok')
-            console.log(this.state.cinemas)
-
-            // if (this.state.cinemas.length > 0){
-            //     console.log(true)
-            // }else{
-            //     console.log(false)
-            // }
-            // var asd = this.state.cinemas.length > 0 ? true : false;
-            // var asd = this.state.cinemas.length > 0 ? null : alert('Precisa ter cinemas cadastrados');
+            // console.log(this.state.cinemas)
 
             if (this.state.cinemas.length > 0) {
                 this.setState({ date: new Date(), no_sala: '1', id_cinema: this.state.cinemas[0].id })
@@ -88,33 +66,8 @@ export default class CreateSessao extends Component {
                 window.location.href = '/editfilme';
             }
 
-
-            // window.location.href = '/';
-
-            // console.log(asd)
-            // alert('hola')
-
-            // this.setState({
-            //     // id_cinema: this.state.cinemas[0].id,
-            //     // id_filme: this.state.filmes[0].id,
-            //     // no_sala: '1',
-            //     // // date: new Date()
-
-            //     // cinemas: [],
-            //     // filmes: [],
-            //     // id_cinema: '',
-            //     // id_filme: '',
-            //     // no_sala: '',
-            //     // date: new Date(),
-            //     // editing: false,
-            //     // _id: ''
-
-            // })
-
-
         }
         // console.log(this.state)
-
     }
 
     onCinemaChange = (e) => {
