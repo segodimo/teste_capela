@@ -12,7 +12,6 @@ export default class Navegador extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
-                            {/* <li className="nav-item active"> <Link className="navbar-brand" to="/filmes">Filmes</Link> </li> */}
                             <li className="nav-item"> <Link className="navbar-brand" to="/">Home</Link> </li>
                             <li className="nav-item"> <Link className="navbar-brand" to="/editfilme">Filme</Link> </li>
                             <li className="nav-item"> <Link className="navbar-brand" to="/editcinema">Cinema</Link> </li>

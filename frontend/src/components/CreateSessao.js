@@ -12,7 +12,7 @@ export default class CreateSessao extends Component {
         id_filme: '',
         no_sala: '',
         date: new Date(),
-        nwedate: '',
+        nwedate: new Date(),
         editing: false,
         _id: ''
     }
@@ -114,6 +114,7 @@ export default class CreateSessao extends Component {
             no_sala: this.state.no_sala,
             date: this.state.nwedate
         };
+        console.log(this.state.nwedate)
         if (this.state.editing) {
             await axios.put('http://localhost:4000/api/sessoes/' + this.state._id, novaSessao)
         } else {
