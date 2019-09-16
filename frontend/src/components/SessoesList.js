@@ -34,7 +34,7 @@ export default class SessoesList extends Component {
             this.setState({ filmes: res_fil.data.filmes });
             const res_cin = await axios.get('http://localhost:4000/api/cinemas');
             if (this.state.cinemas.length > 0) {
-                alert('Precisa ter cinemas cadastradao')
+                alert('Precisa ter cinemas cadastradaos')
                 window.location.href = '/editcinema';
             } else {
                 this.setState({ cinemas: res_cin.data.cinema });
@@ -197,8 +197,12 @@ export default class SessoesList extends Component {
 
 
     deleteSessao = async (id) => {
-        await axios.delete('http://localhost:4000/api/sessoes/' + id);
-        this.getSessao();
+        const res = await axios.delete('http://localhost:4000/api/sessoes/' + id);
+        if(res.status === 200){
+            console.log('res', res)
+            await this.getSessao();
+        }
+
     }
 
     render() {
