@@ -47,7 +47,6 @@ export default class SessoesList extends Component {
                 } else {
                     this.setState({ sessoes: res.data.sessoes });
                     // console.log(this.state.sessoes);
-
                     //++++++++++++++++++++++++++++++++++++
                     const listSesVsDia = this.state.sessoes.map(sessoes => {
                         // const dt = new Date(sessoes.date).getTime();
@@ -69,13 +68,6 @@ export default class SessoesList extends Component {
                             const filme = this.getbyIdFilme(sessoes.id_filme);
                             const cinema = this.getbyIdCinema(sessoes.id_cinema);
                             //++++++++++++++++++++++++++++++++++++
-                            // return sessoes;
-                            // return [{dt_dom:diff, dt_ses:dt.setDate(diff), dt_ses:ses, dt_filme:filme, dt_cinema:cinema, no_sala: sessoes.no_sala }]; getMinutes
-                            // const sesDat =  (new Date(sessoes.date)).getDate() +'/'+ ((new Date(sessoes.date)).getMonth()+1) +'/'+ ((new Date(sessoes.date)).getFullYear()) +' as '+ ((new Date(sessoes.date)).getHours()) +' as '+ ((new Date(sessoes.date)).getMinutes());
-
-                            // const domDat =  (new Date(dt.setDate(diff))).getDate() +'/'+ ((new Date(dt.setDate(diff))).getMonth()+1) +'/'+ (new Date(dt.setDate(diff))).getFullYear();
-
-                            // const domDat =  (new Date(dt.setDate(diff))).getDate() +'/'+ ((new Date(dt.setDate(diff))).getMonth()+1) +'/'+ (new Date(dt.setDate(diff))).getFullYear();
                             const newDomDat = (new Date(dt.setDate(diff))).toDateString()
                             const sesDat =  (new Date(sessoes.date)).toLocaleString();
                             const arr_sessoes = {
@@ -107,79 +99,6 @@ export default class SessoesList extends Component {
                     // const mostrar = this.state.listSesVsDia.map(lsvd => lsvd.dt_dom)
                     // console.log('mostrar', mostrar)
                     //++++++++++++++++++++++++++++++++++++
-
-
-                    // const listUnqSemanas = listSesVsDia.map{
-
-                    // }
-
-                    // var listUnqSemanas = listSesVsDia.filter( function( elem, index, listSesVsDia ) {
-                    //     // return listSesVsDia.indexOf( elem ) === index;
-                    //     return listSesVsDia[0];
-                    // } );
-
-                    // listUnqSemanas = listSemanas.filter((x, i, a) => a.indexOf(x) === i)
-
-                    // console.log(listUnqSemanas.[0]);
-
-                    //++++++++++++++++++++++++++++++++++++
-
-                    //++++++++++++++++++++++++++++++++++++
-                    // const listSesVsDia = this.state.sessoes.map(sessoes => {
-                    //     const diaSessao = new Date(sessoes.date);
-                    //     const dt = new Date(sessoes.date);
-                    //     // console.log('dt', dt)
-                    //     const diff = (dt.getDate() - dt.getDay() + (dt.getDay() === 0 ? -6 : 1) - 1);
-                    //     // return [sessoes.id, dt.setDate(diff)];
-                    //     if (!this.getbyIdFilme(sessoes.id_filme)) {
-                    //         // console.log('sessoes.id', sessoes.id)
-                    //         this.deleteSessao(sessoes.id);
-                    //         return console.log('id_cinema não esta na lista de filmes, seria bom remover esta sessção do banco de dados')
-                    //     } else {
-                    //         if (!this.getbyIdCinema(sessoes.id_cinema)) {
-                    //             // console.log('sessoes.id', sessoes.id)
-                    //             this.deleteSessao(sessoes.id);
-                    //             return console.log('id_cinema não esta na lista de filmes, seria bom remover esta sessção do banco de dados')
-                    //         } else {
-                    //             return [dt.setDate(diff), sessoes.id, this.getbyIdFilme(sessoes.id_filme), this.getbyIdCinema(sessoes.id_cinema), sessoes.no_sala, diaSessao]
-                    //         }
-                    //     }
-                    // });
-                    //++++++++++++++++++++++++++++++++++++
-
-
-                    // // console.log(listSesVsDia)
-                    // // console.log(listSesVsDia[0])
-                    // if (listSesVsDia[0]) {
-                    //     this.setState({ listSesVsDia });
-                    //     //+++++++++++++++++++++++++++++++ˇ+++++
-                    //     const listSemanas = this.state.sessoes.map(sessoes => {
-                    //         const dt = new Date(sessoes.date);
-                    //         return dt.setDate((dt.getDate() - dt.getDay() + (dt.getDay() === 0 ? -6 : 1) - 1));
-                    //     });
-                    //     const listUnqSemanas = listSemanas.filter((x, i, a) => a.indexOf(x) === i)
-                    //     // console.log(listUnqSemanas)
-                    //     this.setState({ listUnqSemanas });
-                    //     //++++++++++++++++++++++++++++++++++++
-                    // } else {
-                    //     console.log('PROBLEMA listSesVsDia INDEFINIDO', listSesVsDia)
-
-                    // }
-
-                    // //++++++++++++++++++++++++++++++++++++
-
-                    // // console.log(listSesVsDia)
-                    // this.setState({ listSesVsDia });
-                    // //++++++++++++++++++++++++++++++++++++
-                    // const listSemanas = this.state.sessoes.map(sessoes => {
-                    //     const dt = new Date(sessoes.date);
-                    //     return dt.setDate((dt.getDate() - dt.getDay() + (dt.getDay() === 0 ? -6 : 1) - 1));
-                    // });
-                    // const listUnqSemanas = listSemanas.filter((x, i, a) => a.indexOf(x) === i)
-                    // // console.log(listUnqSemanas)
-                    // this.setState({ listUnqSemanas });
-                    // //++++++++++++++++++++++++++++++++++++
-
                 }
 
             }
@@ -209,18 +128,11 @@ export default class SessoesList extends Component {
 
         const sessaoTit = (lus) => (
             // let semanaEnMilisegundos = 1000 * 60 * 60 * 24 * 5;
-            // <h3>Sessão {(lus.toDateString())} </h3>
             <h3 className="text-white">Sessão <span className="span_tit_sesf text-white" >{this.state.nomesDias[(lus.getDay())]} {(lus.toLocaleString())} - Sabado {(new Date(lus.getTime() + 518400000).toLocaleString())}</span></h3>
-            // <h3 className="text-white">Sessão <span className="span_tit_sesf text-white" >{this.state.nomesDias[(lus.getDay())]} {(lus.getDate())}/{(lus.getMonth())}/{(lus.getFullYear())} - Sabado * {(lus.getTime() + 604800000)}/{(lus.getMonth())}/{(lus.getFullYear())}</span></h3>
         );
 
         const filmeCard = (index, lsvd) => (
-            // <h4 key={index} >{Date(index)}</h4>
             <div className="card mt-4 border-primary" key={index}>
-                {/* <div className="card-header" key={index}><h5 className="mt-2">{lsvd.dt_filme.nome}</h5> <span className="text-primary">{lsvd[3].nome}, {lsvd[3].cidade}, Sala {lsvd[4]}, Data: {(new Date(datelsv.getTime()).toLocaleString())} </span> </div> */}
-                {/* <div className="card-header" key={index}> <h5 className="mt-2"> {(new Date(datelsv.getTime()).toLocaleString())} </h5> </div> */}
-                {/* <div className="card-header" key={index}><h5 className="mt-2">{lsvd[2].nome}</h5> <span className="text-primary">{lsvd[3].nome}, {lsvd[3].cidade}, Sala {lsvd[4]}, Data: {(new Date(datelsv.getTime()).toLocaleString())} </span> </div> */}
-                {/* <div className="card-header" key={index}><h5 className="mt-2">ASASASASAS</h5>  </div> */}
                 <div className="card-header" key={index}><h5 className="mt-2">{lsvd.dt_filme.nome}</h5> <span className="text-primary">{lsvd.dt_cinema.nome}, {lsvd.dt_cinema.cidade}, Sala({lsvd.dt_sala}), Data: {lsvd.dt_dat}</span></div>
                 <div className="card-body">
                     <blockquote className="blockquote mb-0">
@@ -240,8 +152,6 @@ export default class SessoesList extends Component {
 
         );
 
-
-
         return (
             <div className="container-fluid">
                 {
@@ -249,15 +159,7 @@ export default class SessoesList extends Component {
                         <div className="card my-4" key={lus}>
                             <div className="card-header bg-primary"> {sessaoTit(new Date(lus))} </div>
                             <div className="card-body">
-                                {/* 
-                                {this.state.listSesVsDia.map(lsvd => {
-                                    console.log(lsvd.dt_dom)
-                                    // (lsvd, indexk) => (lus === lsvd.dt_dom ? filmeCard(index, lsvd, new Date(lsvd[5])) : null))
-                                } ) }
-                                 */}
-                                {/* {this.state.listSesVsDia.map((lsvd, index) => (lus === lsvd.dt_dom ? filmeCard(index, lsvd) : null))} */}
                                 {this.state.listSesVsDia.map((lsvd, index) => (lus === lsvd.dt_dom ? filmeCard(index, lsvd) : null))}
-                                {/* {this.state.listSesVsDia.map((lsvd, index) => ( <h1>AWAWAWAW</h1>))} */}
                             </div>
                         </div>
                     ))
